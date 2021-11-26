@@ -1,0 +1,259 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>4.4</version>
+    <date>2021-11-26T09:39:06Z</date>
+    <groups>
+        <group>
+            <name>Templates</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>aliyun redis</template>
+            <name>阿里云redis监控模板（只在Zabbix Server添加）</name>
+            <groups>
+                <group>
+                    <name>Templates</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>阿里云redis监控</name>
+                </application>
+            </applications>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>aliyun Redis discovery</name>
+                    <key>aliyun.redis.discovery</key>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>{#DBINSTANCEDESCRIPTION}  CPU使用率-redis</name>
+                            <key>check.aliyun.redis[Performance,{#DBINSTANCEID},CpuUsage,CpuUsage]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>%</units>
+                            <applications>
+                                <application>
+                                    <name>阿里云redis监控</name>
+                                </application>
+                            </applications>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{last()}&gt;70</expression>
+                                    <name>cpu 使用率大于70% on aliyun redis  {#DBINSTANCEDESCRIPTION}</name>
+                                    <priority>HIGH</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#DBINSTANCEDESCRIPTION}  每秒命中的Key数量-redis</name>
+                            <key>check.aliyun.redis[Performance,{#DBINSTANCEID},Hit_Rate_Monitor,hit]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>Counts/s</units>
+                            <applications>
+                                <application>
+                                    <name>阿里云redis监控</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#DBINSTANCEDESCRIPTION} 内存命中率-redis</name>
+                            <key>check.aliyun.redis[Performance,{#DBINSTANCEID},Hit_Rate_Monitor,hit_rate]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>%</units>
+                            <applications>
+                                <application>
+                                    <name>阿里云redis监控</name>
+                                </application>
+                            </applications>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{last()}&lt;90</expression>
+                                    <name>内存命中率小于90% on aliyun redis  {#DBINSTANCEDESCRIPTION}</name>
+                                    <priority>WARNING</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#DBINSTANCEDESCRIPTION}  每秒未命中的key数量-redis</name>
+                            <key>check.aliyun.redis[Performance,{#DBINSTANCEID},Hit_Rate_Monitor,miss]</key>
+                            <units>Counts/s</units>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#DBINSTANCEDESCRIPTION} 入流量速率-redis</name>
+                            <key>check.aliyun.redis[Performance,{#DBINSTANCEID},IntranetIn,InFlow]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>KBps</units>
+                            <applications>
+                                <application>
+                                    <name>阿里云redis监控</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#DBINSTANCEDESCRIPTION}  出流量速率-redis</name>
+                            <key>check.aliyun.redis[Performance,{#DBINSTANCEID},IntranetOut,OutFlow]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>KBps</units>
+                            <applications>
+                                <application>
+                                    <name>阿里云redis监控</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#DBINSTANCEDESCRIPTION} 内存使用率-redis</name>
+                            <key>check.aliyun.redis[Performance,{#DBINSTANCEID},MemoryUsage,memoryUsage]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>%</units>
+                            <applications>
+                                <application>
+                                    <name>阿里云redis监控</name>
+                                </application>
+                            </applications>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{last()}&gt;80</expression>
+                                    <name>内存使用率-redis 大于80% on aliyun redis  {#DBINSTANCEDESCRIPTION}</name>
+                                    <priority>HIGH</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#DBINSTANCEDESCRIPTION}  平均时延-redis</name>
+                            <key>check.aliyun.redis[Performance,{#DBINSTANCEID},Redis_Avg_Rt_Monitor,AvgRt]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>us</units>
+                            <applications>
+                                <application>
+                                    <name>阿里云redis监控</name>
+                                </application>
+                            </applications>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{last()}&gt;10</expression>
+                                    <name>平均时延大于10us on aliyun redis  {#DBINSTANCEDESCRIPTION}</name>
+                                    <priority>WARNING</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#DBINSTANCEDESCRIPTION}  每秒被驱逐的Key数量-redis</name>
+                            <key>check.aliyun.redis[Performance,{#DBINSTANCEID},Redis_Basic_Monitor,EvictedKeysPerSecond]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>Counts/s</units>
+                            <applications>
+                                <application>
+                                    <name>阿里云redis监控</name>
+                                </application>
+                            </applications>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{last()}&gt;10</expression>
+                                    <name>每秒被驱逐的Key数量大于10个 on aliyun redis  {#DBINSTANCEDESCRIPTION}</name>
+                                    <priority>WARNING</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#DBINSTANCEDESCRIPTION}  历史累计因内存不足被驱逐的Key总数</name>
+                            <key>check.aliyun.redis[Performance,{#DBINSTANCEID},Redis_Basic_Monitor,EvictedKeys]</key>
+                            <units>Counts</units>
+                            <applications>
+                                <application>
+                                    <name>阿里云redis监控</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#DBINSTANCEDESCRIPTION}  每秒被淘汰的Key数量-redis</name>
+                            <key>check.aliyun.redis[Performance,{#DBINSTANCEID},Redis_Basic_Monitor,ExpiredKeysPerSecond]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>Counts/s</units>
+                            <applications>
+                                <application>
+                                    <name>阿里云redis监控</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#DBINSTANCEDESCRIPTION} 历史累计因过期淘汰的Key总数-redis</name>
+                            <key>check.aliyun.redis[Performance,{#DBINSTANCEID},Redis_Basic_Monitor,ExpiredKeys]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>Counts</units>
+                            <applications>
+                                <application>
+                                    <name>阿里云redis监控</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#DBINSTANCEDESCRIPTION} 实例中设置了过期时间的键值对数量-redis</name>
+                            <key>check.aliyun.redis[Performance,{#DBINSTANCEID},Redis_Basic_Monitor,Expires]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>Counts</units>
+                            <applications>
+                                <application>
+                                    <name>阿里云redis监控</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#DBINSTANCEDESCRIPTION} Key总数量-redis</name>
+                            <key>check.aliyun.redis[Performance,{#DBINSTANCEID},Redis_Basic_Monitor,Keys]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>Counts</units>
+                            <applications>
+                                <application>
+                                    <name>阿里云redis监控</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#DBINSTANCEDESCRIPTION}  内存使用量，包含数据和缓存部分-redis</name>
+                            <key>check.aliyun.redis[Performance,{#DBINSTANCEID},UsedMemory,UsedMemory]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>Bytes</units>
+                            <applications>
+                                <application>
+                                    <name>阿里云redis监控</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#DBINSTANCEDESCRIPTION} 每秒读命令请求数-redis</name>
+                            <key>check.aliyun.redis[Performance,{#DBINSTANCEID},UsedQPS,GetQps]</key>
+                            <units>Counts/s</units>
+                            <applications>
+                                <application>
+                                    <name>阿里云redis监控</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#DBINSTANCEDESCRIPTION} 每秒写命令请求数-redis</name>
+                            <key>check.aliyun.redis[Performance,{#DBINSTANCEID},UsedQPS,PutQps]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>Counts/s</units>
+                            <applications>
+                                <application>
+                                    <name>阿里云redis监控</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#DBINSTANCEDESCRIPTION}  每秒总请求数，包含读和写命令-redis</name>
+                            <key>check.aliyun.redis[Performance,{#DBINSTANCEID},UsedQPS,TotalQps]</key>
+                            <value_type>FLOAT</value_type>
+                            <units>Counts/s</units>
+                            <applications>
+                                <application>
+                                    <name>阿里云redis监控</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+        </template>
+    </templates>
+</zabbix_export>
