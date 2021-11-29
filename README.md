@@ -27,5 +27,5 @@ UserParameter=check.aliyun.redis[*],python /etc/zabbix/scripts/check_aliyun_redi
 重启zabbix-agent
 zabbix控制台导入模板，并关联主机
 ## 效果图
-![image](https://user-images.githubusercontent.com/13861904/143827048-42496969-fa5c-44fb-8479-cc24e334e8e1.png)
+![image](https://user-images.githubusercontent.com/13861904/143827184-dbd8e17d-044b-48ba-a726-d7b9852ffc44.png)
 
