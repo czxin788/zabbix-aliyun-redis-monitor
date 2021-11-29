@@ -1,4 +1,0 @@
-vim zabbix_agentd.conf
-#aliyun mongodb montor
-UserParameter=aliyun.mongodb.discovery,python /etc/zabbix/scripts/discovery_mongodb.py
-UserParameter=check.aliyun.mongodb[*],python /etc/zabbix/scripts/check_aliyun_mongo.py $1 $2 $3 $4
