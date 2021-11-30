@@ -1,5 +1,5 @@
 # 功能
-  zabbix通过阿里云api自动发现、监控阿里云redis数据库的性能监控
+  zabbix通过阿里云api自动发现阿里云redis的性能监控
 # 使用方法
 ## 环境要求
  python2或者python3
